@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ghostly</string>
+    <string name="browser_name">Ghostly</string>
+    <string name="ghost_tagline">مخفي. بلا أثر. بلا كوكيز.</string>
+    <string name="ghost_mode">وضع الشبح مفعّل</string>
+    <string name="ghost_mode_desc">صفر ملفات تعريف الارتباط، صفر جلسات محفوظة، بدون أي أثر على الذاكرة.</string>
+    
+    <string name="search_or_enter_url">ابحث أو اكتب عنوان الموقع</string>
+    <string name="find_in_page">بحث في الصفحة</string>
+    <string name="close">إغلاق</string>
+    
+    <string name="panic_wipe">تطهير الشبح</string>
+    <string name="panic_wipe_confirm">هل تريد إغلاق كافة التبويبات وحذف جميع الذاكرة المؤقتة والبيانات فوراً؟</string>
+    <string name="purged_success">تم التطهير الكامل: تم مسح جميع الآثار!</string>
+    
+    <string name="tabs_title">تبويبات الشبح المفتوحة</string>
+    <string name="new_tab">تبويب شبح جديد</string>
+    <string name="close_all_tabs">إغلاق كافة التبويبات</string>
+    <string name="no_tabs">لا توجد تبويبات مفتوحة</string>
+    
+    <string name="settings">إعدادات Ghostly</string>
+    <string name="search_engine">محرك البحث</string>
+    <string name="block_js">حظر الجافاسكريبت</string>
+    <string name="block_images">حظر الصور (توفير البيانات)</string>
+    <string name="desktop_mode">عرض موقع سطح المكتب</string>
+    <string name="clear_data_now">تطهير فوري للذاكرة المؤقتة</string>
+    
+    <string name="about_ghostly">حول Ghostly</string>
+    <string name="about_ghostly_desc">تم بناء Ghostly لتحقيق الخصوصية والتخفي التام. يرفض تماماً ملفات تعريف الارتباط والجلسات المحفوظة ويعمل بالكامل في الذاكرة المؤقتة المتطايرة.</string>
+    <string name="version_format">الإصدار %s</string>
+    
+    <string name="created_by">تم التطوير بواسطة DangerousAngel</string>
+    <string name="created_by_url">https://github.com/DangerousAngel</string>
+    
+    <string name="shortcut_duckduckgo">DuckDuckGo</string>
+    <string name="shortcut_wikipedia">ويكيبيديا</string>
+    <string name="shortcut_youtube">يوتيوب</string>
+    <string name="shortcut_privacyguides">أدلة الخصوصية</string>
+    
+    <string name="ok">موافق</string>
+    <string name="cancel">إلغاء</string>
+    <string name="purge">تطهير الآن</string>
+    <string name="copy_link">نسخ عنوان الرابط</string>
+    <string name="share_link">مشاركة الرابط</string>
+    <string name="open_new_tab">فتح في تبويب جديد</string>
+    <string name="download_image">حفظ الصورة</string>
+    <string name="link_copied">تم نسخ الرابط للحافظة</string>
+    <string name="ssl_warning">تحذير أمني: شهادة SSL لهذا الموقع غير صالحة. هل تريد المتابعة على أية حال؟</string>
+</resources>

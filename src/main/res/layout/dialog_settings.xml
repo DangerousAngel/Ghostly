@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:letterSpacing="0.05"
+            android:text="@string/settings"
+            android:textColor="@color/ghost_text_primary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- Search Engine Selection -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/search_engine"
+            android:textColor="@color/ghost_text_primary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/searchEngineRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_dark"
+            android:padding="8dp">
+
+            <RadioButton
+                android:id="@+id/rbDuckDuckGo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="DuckDuckGo (Privacy Default)"
+                android:textColor="@color/ghost_text_primary" />
+
+            <RadioButton
+                android:id="@+id/rbStartpage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Startpage"
+                android:textColor="@color/ghost_text_primary" />
+
+            <RadioButton
+                android:id="@+id/rbGoogle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Google"
+                android:textColor="@color/ghost_text_primary" />
+
+            <RadioButton
+                android:id="@+id/rbBing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bing"
+                android:textColor="@color/ghost_text_primary" />
+        </RadioGroup>
+
+        <!-- Privacy & Protection Controls -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:text="GHOST PRIVACY CONTROLS"
+            android:textColor="@color/ghost_text_primary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_dark"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <!-- Block Cookies Toggle -->
+            <Switch
+                android:id="@+id/switchBlockCookies"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:text="Block All Cookies (1st &amp; 3rd party)"
+                android:textColor="@color/ghost_text_primary" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/ghost_border" />
+
+            <!-- Block Sessions Toggle -->
+            <Switch
+                android:id="@+id/switchBlockSessions"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:text="Block HTML5 Sessions &amp; DOM Storage"
+                android:textColor="@color/ghost_text_primary" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/ghost_border" />
+
+            <!-- Block Cache Toggle -->
+            <Switch
+                android:id="@+id/switchBlockCache"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:text="Block Disk Cache (Volatile RAM Only)"
+                android:textColor="@color/ghost_text_primary" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/ghost_border" />
+
+            <!-- Do Not Track & GPC Headers -->
+            <Switch
+                android:id="@+id/switchDntHeaders"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:text="Send DNT &amp; Global Privacy Control"
+                android:textColor="@color/ghost_text_primary" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/ghost_border" />
+
+            <!-- Auto-Purge on Exit -->
+            <Switch
+                android:id="@+id/switchAutoPurgeExit"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:text="Auto-Purge All Data on App Exit"
+                android:textColor="@color/ghost_text_primary" />
+        </LinearLayout>
+
+        <!-- Content Controls -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:text="CONTENT CONTROLS"
+            android:textColor="@color/ghost_text_primary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_dark"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <Switch
+                android:id="@+id/switchBlockJs"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:text="@string/block_js"
+                android:textColor="@color/ghost_text_primary" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/ghost_border" />
+
+            <Switch
+                android:id="@+id/switchBlockImages"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:text="@string/block_images"
+                android:textColor="@color/ghost_text_primary" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/ghost_border" />
+
+            <Switch
+                android:id="@+id/switchDesktopMode"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:text="@string/desktop_mode"
+                android:textColor="@color/ghost_text_primary" />
+        </LinearLayout>
+
+        <!-- Square Radius Instant Purge Button -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:text="PURGE MEMORY"
+            android:textColor="@color/ghost_text_primary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnInstantPurge"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_square_purge_btn"
+            android:text="@string/clear_data_now"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <!-- Scrollable About Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:text="ABOUT GHOSTLY"
+            android:textColor="@color/ghost_text_primary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_dark"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <!-- Dedicated Scrollable Container for About -->
+            <ScrollView
+                android:id="@+id/aboutScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:fadeScrollbars="false"
+                android:scrollbarThumbVertical="@color/ghost_border">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ghostly Browser 2.0.0"
+                        android:textColor="@color/ghost_text_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Package: da.ghostly.com"
+                        android:textColor="@color/ghost_text_muted"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/tvCreatedBy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:text="@string/created_by"
+                        android:textColor="@color/ghost_text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvAuthorLink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="github.com/DangerousAngel"
+                        android:textColor="@color/ghost_text_secondary"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="3dp"
+                        android:text="@string/about_ghostly_desc"
+                        android:textColor="@color/ghost_text_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="3dp"
+                        android:text="• Strict Zero-Cookie Engine: All 1st and 3rd party cookies blocked\n• Volatile Sessions: Zero localStorage or WebSQL persisted\n• No-Cache Protocol: In-memory volatile RAM only\n• Privacy Headers: Automated DNT and Sec-GPC injection\n• Untraceable: Zero browsing history or telemetry recorded\n• Pure Native: Zero external libraries, maximum speed and security"
+                        android:textColor="@color/ghost_text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+
+        <!-- Close Button -->
+        <Button
+            android:id="@+id/btnSettingsClose"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_button_dark"
+            android:text="@string/close"
+            android:textColor="@color/ghost_text_primary" />
+
+    </LinearLayout>
+</ScrollView>

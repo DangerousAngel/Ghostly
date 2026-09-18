@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Pure Monochrome Black & White Palette matching the Ghostly Skull/G Logo -->
+    <color name="ghost_black">#000000</color>
+    <color name="ghost_surface">#111111</color>
+    <color name="ghost_surface_variant">#1A1A1A</color>
+    <color name="ghost_surface_highlight">#282828</color>
+    <color name="ghost_accent">#FFFFFF</color>
+    <color name="ghost_accent_cyan">#E0E0E0</color>
+    <color name="ghost_accent_glow">#333333</color>
+    <color name="ghost_text_primary">#FFFFFF</color>
+    <color name="ghost_text_secondary">#B4B4B4</color>
+    <color name="ghost_text_muted">#666666</color>
+    <color name="ghost_danger">#FFFFFF</color>
+    <color name="ghost_danger_bg">#181818</color>
+    <color name="ghost_success">#FFFFFF</color>
+    <color name="ghost_border">#2E2E2E</color>
+    <color name="ghost_progress">#FFFFFF</color>
+    <color name="ghost_tab_badge_bg">#FFFFFF</color>
+    <color name="ghost_tab_badge_text">#000000</color>
+</resources>

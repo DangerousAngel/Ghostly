@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_dark"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/dialogTabsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/tabs_title"
+            android:textColor="@color/ghost_text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/closeAllTabsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/bg_button_dark"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="@string/close_all_tabs"
+            android:textColor="@color/ghost_danger"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <!-- Tabs List Scroll Area -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:maxHeight="380dp">
+
+        <LinearLayout
+            android:id="@+id/tabsListContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <!-- Bottom Actions -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/dialogTabsCloseBtn"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button_dark"
+            android:text="@string/close"
+            android:textColor="@color/ghost_text_secondary" />
+
+        <Button
+            android:id="@+id/dialogNewTabBtn"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1.4"
+            android:background="@drawable/bg_button_dark"
+            android:drawableStart="@drawable/ic_add"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/new_tab"
+            android:textColor="@color/ghost_accent"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

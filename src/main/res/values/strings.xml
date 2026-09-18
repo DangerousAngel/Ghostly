@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ghostly</string>
+    <string name="browser_name">Ghostly</string>
+    <string name="ghost_tagline">Hidden. Untraceable. Zero Cookies.</string>
+    <string name="ghost_mode">Ghost Mode Active</string>
+    <string name="ghost_mode_desc">Zero cookies, zero saved sessions, zero browsing traces left on disk.</string>
+    
+    <string name="search_or_enter_url">Search or type URL</string>
+    <string name="find_in_page">Find on page</string>
+    <string name="close">Close</string>
+    
+    <string name="panic_wipe">Ghost Purge</string>
+    <string name="panic_wipe_confirm">Purge all open tabs, cookies, cache, and session memory now?</string>
+    <string name="purged_success">Ghost Purge Complete: All traces erased!</string>
+    
+    <string name="tabs_title">Open Ghost Tabs</string>
+    <string name="new_tab">New Ghost Tab</string>
+    <string name="close_all_tabs">Close All Tabs</string>
+    <string name="no_tabs">No tabs open</string>
+    
+    <string name="settings">Ghostly Settings</string>
+    <string name="search_engine">Search Engine</string>
+    <string name="block_js">Block JavaScript</string>
+    <string name="block_images">Block Images (Data Saver)</string>
+    <string name="desktop_mode">Desktop Site</string>
+    <string name="clear_data_now">Instant Purge Cache &amp; Memory</string>
+    
+    <string name="about_ghostly">About Ghostly</string>
+    <string name="about_ghostly_desc">Ghostly is built for pure anonymity and privacy. It strictly refuses all cookies, rejects session persistence, and isolates every page session in volatile memory.</string>
+    <string name="version_format">Version %s</string>
+    
+    <string name="created_by">Created by DangerousAngel</string>
+    <string name="created_by_url">https://github.com/DangerousAngel</string>
+    
+    <string name="shortcut_duckduckgo">DuckDuckGo</string>
+    <string name="shortcut_wikipedia">Wikipedia</string>
+    <string name="shortcut_youtube">YouTube</string>
+    <string name="shortcut_privacyguides">Privacy Guides</string>
+    
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="purge">Purge Now</string>
+    <string name="copy_link">Copy link address</string>
+    <string name="share_link">Share link</string>
+    <string name="open_new_tab">Open in new tab</string>
+    <string name="download_image">Save image</string>
+    <string name="link_copied">Link copied to clipboard</string>
+    <string name="ssl_warning">Security warning: The SSL certificate for this site is invalid. Load anyway?</string>
+</resources>

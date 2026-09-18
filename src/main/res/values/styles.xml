@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application dark theme -->
+    <style name="Theme.Ghostly" parent="@android:style/Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowBackground">@color/ghost_black</item>
+        <item name="android:statusBarColor">@color/ghost_surface</item>
+        <item name="android:navigationBarColor">@color/ghost_surface</item>
+        <item name="android:colorPrimary">@color/ghost_accent</item>
+        <item name="android:colorAccent">@color/ghost_accent</item>
+        <item name="android:textColorPrimary">@color/ghost_text_primary</item>
+        <item name="android:textColorSecondary">@color/ghost_text_secondary</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- Custom dark dialog style -->
+    <style name="GhostDialog" parent="@android:style/Theme.DeviceDefault.Dialog">
+        <item name="android:windowBackground">@drawable/bg_dialog_dark</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:textColorPrimary">@color/ghost_text_primary</item>
+        <item name="android:textColorSecondary">@color/ghost_text_secondary</item>
+    </style>
+</resources>
