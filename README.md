@@ -6,7 +6,7 @@ Created by **[DangerousAngel](https://github.com/DangerousAngel)**
 
 ---
 
-## ✨ Features
+##  Features
 
 - **Pure Monochrome Aesthetic**
 - **Zero-Cookie Engine** 
@@ -18,7 +18,7 @@ Created by **[DangerousAngel](https://github.com/DangerousAngel)**
 
 ---
 
-## 🛠 Project Architecture
+##  Project Architecture
 
 - **Package**: `da.ghostly.com`
 - **Minimum SDK**: Android 5.0 (API 21)
@@ -39,7 +39,7 @@ da.ghostly.com/
 
 ---
 
-## 🚀 Building & Running
+##  Building & Running
 
 Ensure you have Android SDK 34 installed.
 
