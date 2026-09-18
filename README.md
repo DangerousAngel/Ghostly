@@ -1,7 +1,7 @@
 # 👻 Ghostly
 
 > **A modern, minimalist, pure monochrome Android browser engineered for zero-trace browsing, ephemeral memory, and maximum privacy.**
-[ss](src/main/res/drawable/ic_ghost_launcher.png)
+![ss](src/main/res/drawable/ic_ghost_launcher.png)
 Created by **[DangerousAngel](https://github.com/DangerousAngel)** 
 
 ---
