@@ -8,20 +8,13 @@ Created by **[DangerousAngel](https://github.com/DangerousAngel)**
 
 ## ✨ Features
 
-- **Pure Monochrome Aesthetic**: High-contrast black and white UI, styled after the signature Ghostly skull emblem. Zero color distractions.
-- **Zero-Cookie Engine**: All first-party and third-party cookies are blocked and discarded.
-- **Ephemeral In-Memory Sessions**: Zero persistence of web storage, session history, or local databases (`localStorage`, `sessionStorage`, `WebSQL`, `IndexedDB`). Everything lives in volatile memory and vanishes on exit.
-- **Strict No-Cache Architecture**: Uses `LOAD_NO_CACHE` and clears application RAM cache immediately upon tab closure or purge.
-- **Privacy Headers**: Automatically injects `DNT: 1` (Do Not Track) and `Sec-GPC: 1` (Global Privacy Control) headers into outgoing network requests.
-- **Instant Purge**: Dedicated sharp-corner memory and cache purge button in Settings, as well as a panic wipe button in the navigation toolbar.
-- **Zero Third-Party Libraries**: Built 100% with native Android SDK components (`android.webkit.*`, `android.widget.*`, `android.view.*`). No analytics, no advertising SDKs, no trackers.
-- **Private Quick Shortcuts**:
-  - DuckDuckGo (`DDG`)
-  - YouTube (`YT`)
-  - Wikipedia (`WIKI`)
-  - Privacy Guides (`GUIDE`)
-- **Multi-Tab Sandboxing**: Full multi-tab management with ephemeral tabs.
-- **Localized**: Full English and Arabic (`values-ar`) support with RTL layout adaptability.
+- **Pure Monochrome Aesthetic**
+- **Zero-Cookie Engine** 
+- **Ephemeral In-Memory Sessions**
+- **Strict No-Cache Architecture**
+- **Privacy Headers**
+- **Instant Purge**
+- **Zero Third-Party Libraries**
 
 ---
 
@@ -64,13 +57,6 @@ The compiled APK will be located at:
 ```
 build/outputs/apk/debug/Ghostly-debug.apk
 ```
-
----
-
-## 👤 Author
-
-- **DangerousAngel** - [GitHub Profile](https://github.com/DangerousAngel)
-- **Repository**: [DangerousAngel/Ghostly](https://github.com/DangerousAngel/Ghostly)
 
 ---
 
