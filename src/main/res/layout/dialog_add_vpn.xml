@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_dark"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.06"
+            android:text="ADD IN-APP VPN"
+            android:textColor="@color/ghost_text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/vpn_section_desc"
+            android:textColor="@color/ghost_text_secondary"
+            android:textSize="12sp" />
+
+        <!-- Profile Name -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/vpn_name"
+            android:textColor="@color/ghost_text_primary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etVpnName"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_url_bar"
+            android:hint="e.g. Ghostly Secure Gateway"
+            android:imeOptions="actionNext"
+            android:inputType="textCapWords"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:singleLine="true"
+            android:textColor="@color/ghost_text_primary"
+            android:textColorHint="@color/ghost_text_muted"
+            android:textSize="13sp" />
+
+        <!-- Protocol Type -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/vpn_type"
+            android:textColor="@color/ghost_text_primary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spVpnType"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_url_bar"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp" />
+
+        <!-- Server Address -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/server_address"
+            android:textColor="@color/ghost_text_primary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etServerAddress"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_url_bar"
+            android:hint="e.g. vpn.example.com or 198.51.100.1"
+            android:imeOptions="actionDone"
+            android:inputType="textUri"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:singleLine="true"
+            android:textColor="@color/ghost_text_primary"
+            android:textColorHint="@color/ghost_text_muted"
+            android:textSize="13sp" />
+
+        <!-- IPSec Pre-Shared Key (Optional / Conditional) -->
+        <LinearLayout
+            android:id="@+id/layoutPsk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/ipsec_psk"
+                android:textColor="@color/ghost_text_primary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etIpsecPsk"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@drawable/bg_url_bar"
+                android:hint="Pre-shared key"
+                android:inputType="textPassword"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:singleLine="true"
+                android:textColor="@color/ghost_text_primary"
+                android:textColorHint="@color/ghost_text_muted"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- PPP Encryption Checkbox -->
+        <CheckBox
+            android:id="@+id/cbPppEncryption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:checked="true"
+            android:text="@string/ppp_encryption"
+            android:textColor="@color/ghost_text_primary"
+            android:textSize="13sp" />
+
+        <!-- Buttons Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCancelAddVpn"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_dark"
+                android:text="@string/cancel"
+                android:textColor="@color/ghost_text_secondary" />
+
+            <Button
+                android:id="@+id/btnSaveVpn"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_square_purge_btn"
+                android:text="@string/save_vpn"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

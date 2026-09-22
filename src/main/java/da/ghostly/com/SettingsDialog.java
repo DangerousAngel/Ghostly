@@ -1,7 +1,9 @@
 package da.ghostly.com;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -9,10 +11,15 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
+import android.widget.TextView;
+import da.ghostly.com.vpn.AddVpnDialog;
+import da.ghostly.com.vpn.GhostVpnManager;
+import da.ghostly.com.vpn.GhostVpnProfile;
+import da.ghostly.com.vpn.VpnListDialog;
 
 /**
  * SettingsDialog
- * Dark-mode modal dialog for managing Ghostly's privacy settings.
+ * Dark-mode modal dialog for managing Ghostly's privacy settings with responsive layout and VPN controls.
  */
 public class SettingsDialog {
 
@@ -126,6 +133,72 @@ public class SettingsDialog {
             settings.setDesktopMode(isChecked);
             if (callback != null) callback.onSettingsChanged();
         });
+
+        // Window responsiveness (adapts to small phones, landscape, tablets)
+        Window window = dialog.getWindow();
+        if (window != null) {
+            DisplayMetrics dm = context.getResources().getDisplayMetrics();
+            int screenWidth = dm.widthPixels;
+            int screenHeight = dm.heightPixels;
+            int targetWidth = (int) (screenWidth * 0.94f);
+            int maxWidthPx = (int) (540 * dm.density);
+            if (targetWidth > maxWidthPx) {
+                targetWidth = maxWidthPx;
+            }
+            int targetHeight = (int) (screenHeight * 0.86f);
+            window.setLayout(targetWidth, targetHeight);
+        }
+
+        // In-App Isolated VPN Controls
+        final TextView tvSettingsVpnStatus = view.findViewById(R.id.tvSettingsVpnStatus);
+        final TextView tvSettingsVpnBadge = view.findViewById(R.id.tvSettingsVpnBadge);
+        Button btnSettingsAddVpn = view.findViewById(R.id.btnSettingsAddVpn);
+        Button btnSettingsManageVpn = view.findViewById(R.id.btnSettingsManageVpn);
+
+        final GhostVpnManager vpnManager = GhostVpnManager.getInstance(context);
+
+        final Runnable refreshVpnStatus = () -> {
+            int state = vpnManager.getCurrentState();
+            GhostVpnProfile active = vpnManager.getActiveProfile();
+            if (state == GhostVpnManager.STATE_CONNECTED && active != null) {
+                if (tvSettingsVpnStatus != null) tvSettingsVpnStatus.setText(active.getName() + " (" + active.getType() + ")");
+                if (tvSettingsVpnBadge != null) {
+                    tvSettingsVpnBadge.setText("ACTIVE");
+                    tvSettingsVpnBadge.setBackgroundResource(R.drawable.bg_vpn_badge);
+                    tvSettingsVpnBadge.setTextColor(0xFF000000);
+                }
+            } else if (state == GhostVpnManager.STATE_CONNECTING) {
+                if (tvSettingsVpnStatus != null) tvSettingsVpnStatus.setText("Tunnel connecting...");
+                if (tvSettingsVpnBadge != null) {
+                    tvSettingsVpnBadge.setText("CONNECTING");
+                    tvSettingsVpnBadge.setBackgroundResource(R.drawable.bg_terminal_console);
+                    tvSettingsVpnBadge.setTextColor(0xFFFFFFFF);
+                }
+            } else {
+                if (tvSettingsVpnStatus != null) tvSettingsVpnStatus.setText("Isolated Tunnel: Disabled");
+                if (tvSettingsVpnBadge != null) {
+                    tvSettingsVpnBadge.setText("INACTIVE");
+                    tvSettingsVpnBadge.setBackgroundResource(R.drawable.bg_terminal_console);
+                    tvSettingsVpnBadge.setTextColor(0xFF888888);
+                }
+            }
+        };
+
+        refreshVpnStatus.run();
+
+        if (btnSettingsAddVpn != null) {
+            btnSettingsAddVpn.setOnClickListener(v -> {
+                AddVpnDialog.show(context, profile -> refreshVpnStatus.run());
+            });
+        }
+
+        if (btnSettingsManageVpn != null) {
+            btnSettingsManageVpn.setOnClickListener(v -> {
+                if (context instanceof Activity) {
+                    VpnListDialog.show((Activity) context);
+                }
+            });
+        }
 
         // Instant Purge Button (Square Container)
         Button btnInstantPurge = view.findViewById(R.id.btnInstantPurge);

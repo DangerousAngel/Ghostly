@@ -57,6 +57,38 @@ public class GhostTab {
         this.favicon = favicon;
     }
 
+    private int lastErrorCode = 0;
+    private String lastErrorDescription = null;
+    private String lastErrorUrl = null;
+
+    public boolean hasError() {
+        return lastErrorCode != 0;
+    }
+
+    public int getLastErrorCode() {
+        return lastErrorCode;
+    }
+
+    public String getLastErrorDescription() {
+        return lastErrorDescription;
+    }
+
+    public String getLastErrorUrl() {
+        return lastErrorUrl;
+    }
+
+    public void setError(int code, String description, String url) {
+        this.lastErrorCode = code;
+        this.lastErrorDescription = description;
+        this.lastErrorUrl = url;
+    }
+
+    public void clearError() {
+        this.lastErrorCode = 0;
+        this.lastErrorDescription = null;
+        this.lastErrorUrl = null;
+    }
+
     public boolean isHome() {
         return url == null || url.isEmpty() || url.equalsIgnoreCase("about:blank");
     }

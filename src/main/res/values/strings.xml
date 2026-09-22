@@ -47,4 +47,42 @@
     <string name="download_image">Save image</string>
     <string name="link_copied">Link copied to clipboard</string>
     <string name="ssl_warning">Security warning: The SSL certificate for this site is invalid. Load anyway?</string>
+
+    <!-- Expert Error Interface -->
+    <string name="error_network_fault">NETWORK SUBSYSTEM FAULT</string>
+    <string name="error_diagnostics_title">CONNECTION FAILED / NO ROUTE TO HOST</string>
+    <string name="error_diagnostics_desc">The TCP/IP transport layer or DNS subsystem could not reach the target endpoint.</string>
+    <string name="retry_connection">RETRY CONNECTION</string>
+    <string name="copy_diagnostics">COPY TECHNICAL REPORT</string>
+    <string name="run_probe">RUN DIAGNOSTIC PROBE</string>
+    <string name="return_home">RETURN TO HOME</string>
+    <string name="diagnostics_copied">Diagnostics report copied to clipboard</string>
+    <string name="probe_running">Executing socket &amp; DNS probe...</string>
+
+    <!-- In-App Isolated VPN -->
+    <string name="vpn_section_title">IN-APP ISOLATED VPN</string>
+    <string name="vpn_section_desc">Tunnel web traffic exclusively for Ghostly. Other device apps remain unaffected.</string>
+    <string name="add_vpn">+ Add VPN</string>
+    <string name="manage_vpns">Manage In-App VPNs</string>
+    <string name="vpn_profiles_title">In-App VPN Tunnels</string>
+    <string name="vpn_name">VPN Name</string>
+    <string name="vpn_type">VPN Type</string>
+    <string name="server_address">Server Address</string>
+    <string name="ppp_encryption">PPP encryption (MPPE)</string>
+    <string name="ipsec_psk">IPSec Pre-shared Key (PSK)</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="remember_credentials">Remember credentials</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="delete">Delete</string>
+    <string name="save_vpn">Save VPN</string>
+    <string name="vpn_connected">Connected</string>
+    <string name="vpn_connecting">Connecting...</string>
+    <string name="vpn_disconnected">Disconnected</string>
+    <string name="no_vpns">No in-app VPN profiles configured.\nTap \'+ Add VPN\' to create an isolated tunnel.</string>
+    <string name="vpn_active_badge">VPN</string>
+    <string name="vpn_connected_toast">In-app VPN connected: %s</string>
+    <string name="vpn_disconnected_toast">In-app VPN disconnected</string>
+    <string name="vpn_auth_title">VPN Authentication</string>
 </resources>

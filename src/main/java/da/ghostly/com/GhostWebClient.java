@@ -22,6 +22,7 @@ public class GhostWebClient extends WebViewClient {
         void onPageStarted(WebView view, String url, Bitmap favicon);
         void onPageFinished(WebView view, String url);
         void onUrlChanged(String url);
+        void onConnectionError(WebView view, int errorCode, String description, String failingUrl);
     }
 
     private final Context context;
@@ -94,12 +95,37 @@ public class GhostWebClient extends WebViewClient {
     }
 
     @Override
+    public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+        super.onReceivedError(view, errorCode, description, failingUrl);
+        if (callback != null) {
+            callback.onConnectionError(view, errorCode, description, failingUrl);
+        }
+    }
+
+    @Override
+    public void onReceivedError(WebView view, android.webkit.WebResourceRequest request, android.webkit.WebResourceError error) {
+        super.onReceivedError(view, request, error);
+        if (request != null && request.isForMainFrame()) {
+            if (callback != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                callback.onConnectionError(view, error.getErrorCode(),
+                        error.getDescription() != null ? error.getDescription().toString() : "Network error",
+                        request.getUrl().toString());
+            }
+        }
+    }
+
+    @Override
     public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error) {
         new AlertDialog.Builder(context, R.style.GhostDialog)
                 .setTitle("SSL Warning")
                 .setMessage(R.string.ssl_warning)
                 .setPositiveButton("Proceed", (dialog, which) -> handler.proceed())
-                .setNegativeButton("Cancel", (dialog, which) -> handler.cancel())
+                .setNegativeButton("Cancel", (dialog, which) -> {
+                    handler.cancel();
+                    if (callback != null) {
+                        callback.onConnectionError(view, -11, "SSL Certificate Untrusted / Verification Failed", view.getUrl());
+                    }
+                })
                 .setCancelable(false)
                 .show();
     }

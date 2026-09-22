@@ -27,6 +27,24 @@
             android:padding="8dp"
             android:src="@drawable/ic_shield" />
 
+        <!-- In-App VPN Active Indicator Badge -->
+        <TextView
+            android:id="@+id/vpnIndicatorBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_vpn_badge"
+            android:paddingStart="5dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="2dp"
+            android:text="VPN"
+            android:textColor="#000000"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
         <!-- Address / Search Bar Pill -->
         <LinearLayout
             android:id="@+id/urlBarLayout"
@@ -266,6 +284,12 @@
         <include
             android:id="@+id/homeLayout"
             layout="@layout/view_ghost_home" />
+
+        <!-- Expert Error Layout (Hidden by default) -->
+        <include
+            android:id="@+id/errorLayout"
+            layout="@layout/view_expert_error"
+            android:visibility="gone" />
     </FrameLayout>
 
 </RelativeLayout>

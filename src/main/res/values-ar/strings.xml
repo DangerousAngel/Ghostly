@@ -47,4 +47,42 @@
     <string name="download_image">حفظ الصورة</string>
     <string name="link_copied">تم نسخ الرابط للحافظة</string>
     <string name="ssl_warning">تحذير أمني: شهادة SSL لهذا الموقع غير صالحة. هل تريد المتابعة على أية حال؟</string>
+
+    <!-- Expert Error Interface -->
+    <string name="error_network_fault">عطل في طبقة الشبكة</string>
+    <string name="error_diagnostics_title">فشل الاتصال / لا يوجد مسار للهدف</string>
+    <string name="error_diagnostics_desc">تعذر على طبقة النقل TCP/IP أو نظام DNS الوصول إلى نقطة النهاية المطلوبة.</string>
+    <string name="retry_connection">إعادة محاولة الاتصال</string>
+    <string name="copy_diagnostics">نسخ التقرير الفني</string>
+    <string name="run_probe">تشغيل فحص التشخيص المباشر</string>
+    <string name="return_home">العودة للرئيسية</string>
+    <string name="diagnostics_copied">تم نسخ تقرير التشخيص للحافظة</string>
+    <string name="probe_running">جاري تنفيذ فحص مقابس DNS و TCP...</string>
+
+    <!-- In-App Isolated VPN -->
+    <string name="vpn_section_title">شبكة VPN داخلية معزولة</string>
+    <string name="vpn_section_desc">توجيه حركة مرور الويب داخل Ghostly حصراً دون التأثير على باقي تطبيقات الجهاز.</string>
+    <string name="add_vpn">+ إضافة VPN</string>
+    <string name="manage_vpns">إدارة شبكات VPN</string>
+    <string name="vpn_profiles_title">أنفاق VPN المعزولة</string>
+    <string name="vpn_name">اسم الشبكة</string>
+    <string name="vpn_type">نوع البروتوكول</string>
+    <string name="server_address">عنوان الخادم</string>
+    <string name="ppp_encryption">تشفير PPP (MPPE)</string>
+    <string name="ipsec_psk">مفتاح IPSec المشترك مسبقاً (PSK)</string>
+    <string name="username">اسم المستخدم</string>
+    <string name="password">كلمة المرور</string>
+    <string name="remember_credentials">تذكر بيانات الاعتماد</string>
+    <string name="connect">اتصال</string>
+    <string name="disconnect">قطع الاتصال</string>
+    <string name="delete">حذف</string>
+    <string name="save_vpn">حفظ VPN</string>
+    <string name="vpn_connected">متصل</string>
+    <string name="vpn_connecting">جاري الاتصال...</string>
+    <string name="vpn_disconnected">غير متصل</string>
+    <string name="no_vpns">لا توجد شبكات VPN داخلية مهيأة.\nانقر فوق \'+ إضافة VPN\' لإنشاء نفق معزول.</string>
+    <string name="vpn_active_badge">VPN</string>
+    <string name="vpn_connected_toast">تم الاتصال بنفق VPN الداخلي: %s</string>
+    <string name="vpn_disconnected_toast">تم قطع اتصال VPN الداخلي</string>
+    <string name="vpn_auth_title">مصادقة شبكة VPN</string>
 </resources>
