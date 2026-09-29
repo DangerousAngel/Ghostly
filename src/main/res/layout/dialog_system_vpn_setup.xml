@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_dark"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_vpn" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:letterSpacing="0.04"
+                android:text="SYSTEM VPN SETUP"
+                android:textColor="@color/ghost_text_primary"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSetupBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_terminal_console"
+                android:paddingStart="8dp"
+                android:paddingTop="3dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="3dp"
+                android:text="REQUIRED"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Explanation -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:lineSpacingExtra="2dp"
+            android:text="L2TP/IPSec requires Android\u2019s built-in VPN client. Configure the VPN profile in System Settings using the details below."
+            android:textColor="@color/ghost_text_secondary"
+            android:textSize="12sp" />
+
+        <!-- VPN Details Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_card_dark"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/tvSetupProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VPN Gate (Japan #1)"
+                android:textColor="@color/ghost_text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/ghost_border" />
+
+            <!-- Type -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:text="Type"
+                    android:textColor="@color/ghost_text_muted"
+                    android:textSize="11sp" />
+                <TextView
+                    android:id="@+id/tvSetupType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:text="L2TP/IPSec PSK"
+                    android:textColor="@color/ghost_text_primary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Server Address -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:text="Server Address"
+                    android:textColor="@color/ghost_text_muted"
+                    android:textSize="11sp" />
+                <TextView
+                    android:id="@+id/tvSetupServer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:text="219.100.37.201"
+                    android:textColor="@color/ghost_text_primary"
+                    android:textSize="12sp"
+                    android:textIsSelectable="true" />
+            </LinearLayout>
+
+            <!-- IPSec PSK -->
+            <LinearLayout
+                android:id="@+id/layoutSetupPsk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:text="IPSec PSK"
+                    android:textColor="@color/ghost_text_muted"
+                    android:textSize="11sp" />
+                <TextView
+                    android:id="@+id/tvSetupPsk"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:text="vpn"
+                    android:textColor="@color/ghost_text_primary"
+                    android:textSize="12sp"
+                    android:textIsSelectable="true" />
+            </LinearLayout>
+
+            <!-- Username -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:textColor="@color/ghost_text_muted"
+                    android:textSize="11sp" />
+                <TextView
+                    android:id="@+id/tvSetupUsername"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:text="vpn"
+                    android:textColor="@color/ghost_text_primary"
+                    android:textSize="12sp"
+                    android:textIsSelectable="true" />
+            </LinearLayout>
+
+            <!-- Password -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:text="Password"
+                    android:textColor="@color/ghost_text_muted"
+                    android:textSize="11sp" />
+                <TextView
+                    android:id="@+id/tvSetupPassword"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="monospace"
+                    android:text="vpn"
+                    android:textColor="@color/ghost_text_primary"
+                    android:textSize="12sp"
+                    android:textIsSelectable="true" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Copy All Button -->
+        <Button
+            android:id="@+id/btnCopyAllDetails"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_button_dark"
+            android:text="COPY ALL DETAILS TO CLIPBOARD"
+            android:textColor="@color/ghost_text_primary"
+            android:textSize="11sp" />
+
+        <!-- Open System VPN Settings Button -->
+        <Button
+            android:id="@+id/btnOpenSystemVpn"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_square_purge_btn"
+            android:text="OPEN SYSTEM VPN SETTINGS"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <!-- Steps -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="4dp"
+            android:text="MANUAL SETUP STEPS"
+            android:textColor="@color/ghost_text_muted"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_terminal_console"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:lineSpacingExtra="3dp"
+                android:text="1. Tap OPEN SYSTEM VPN SETTINGS above\n2. Tap + or \u2018Add VPN\u2019\n3. Enter the Name, Type, Server, PSK\n4. Save the profile\n5. Tap the profile and enter Username / Password\n6. Connect \u2014 all apps route through VPN"
+                android:textColor="#CCCCCC"
+                android:textSize="11sp" />
+        </FrameLayout>
+
+        <!-- Close Button -->
+        <Button
+            android:id="@+id/btnCloseSetup"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_button_dark"
+            android:text="Close"
+            android:textColor="@color/ghost_text_secondary" />
+
+    </LinearLayout>
+</ScrollView>

@@ -30,6 +30,7 @@ public class GhostVpnProfile {
     private String name;
     private String type;
     private String serverAddress;
+    private String ipIdentifier;
     private boolean pppEncryption;
     private String ipsecPsk;
     private String lastUsername;
@@ -42,6 +43,7 @@ public class GhostVpnProfile {
         this.name = "";
         this.type = TYPE_L2TP_IPSEC_PSK;
         this.serverAddress = "";
+        this.ipIdentifier = "";
         this.pppEncryption = true;
         this.ipsecPsk = "";
         this.lastUsername = "";
@@ -51,10 +53,15 @@ public class GhostVpnProfile {
     }
 
     public GhostVpnProfile(String name, String type, String serverAddress, boolean pppEncryption, String ipsecPsk) {
+        this(name, type, serverAddress, "", pppEncryption, ipsecPsk);
+    }
+
+    public GhostVpnProfile(String name, String type, String serverAddress, String ipIdentifier, boolean pppEncryption, String ipsecPsk) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.type = (type != null && !type.isEmpty()) ? type : TYPE_L2TP_IPSEC_PSK;
         this.serverAddress = serverAddress;
+        this.ipIdentifier = (ipIdentifier != null) ? ipIdentifier : "";
         this.pppEncryption = pppEncryption;
         this.ipsecPsk = (ipsecPsk != null) ? ipsecPsk : "";
         this.lastUsername = "";
@@ -93,6 +100,14 @@ public class GhostVpnProfile {
 
     public void setServerAddress(String serverAddress) {
         this.serverAddress = serverAddress;
+    }
+
+    public String getIpIdentifier() {
+        return (ipIdentifier != null) ? ipIdentifier : "";
+    }
+
+    public void setIpIdentifier(String ipIdentifier) {
+        this.ipIdentifier = (ipIdentifier != null) ? ipIdentifier : "";
     }
 
     public boolean isPppEncryption() {
@@ -149,6 +164,7 @@ public class GhostVpnProfile {
         obj.put("name", name);
         obj.put("type", type);
         obj.put("serverAddress", serverAddress);
+        obj.put("ipIdentifier", ipIdentifier != null ? ipIdentifier : "");
         obj.put("pppEncryption", pppEncryption);
         obj.put("ipsecPsk", ipsecPsk);
         obj.put("lastUsername", lastUsername);
@@ -165,6 +181,7 @@ public class GhostVpnProfile {
         profile.setName(obj.optString("name", "Ghostly Tunnel"));
         profile.setType(obj.optString("type", TYPE_L2TP_IPSEC_PSK));
         profile.setServerAddress(obj.optString("serverAddress", ""));
+        profile.setIpIdentifier(obj.optString("ipIdentifier", ""));
         profile.setPppEncryption(obj.optBoolean("pppEncryption", true));
         profile.setIpsecPsk(obj.optString("ipsecPsk", ""));
         profile.setLastUsername(obj.optString("lastUsername", ""));

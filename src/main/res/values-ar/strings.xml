@@ -60,11 +60,11 @@
     <string name="probe_running">جاري تنفيذ فحص مقابس DNS و TCP...</string>
 
     <!-- In-App Isolated VPN -->
-    <string name="vpn_section_title">شبكة VPN داخلية معزولة</string>
-    <string name="vpn_section_desc">توجيه حركة مرور الويب داخل Ghostly حصراً دون التأثير على باقي تطبيقات الجهاز.</string>
+    <string name="vpn_section_title">إعدادات VPN</string>
+    <string name="vpn_section_desc">إعداد ملفات VPN. يستخدم عميل L2TP/IPSec المدمج في أندرويد للاتصال المشفر عبر جميع التطبيقات.</string>
     <string name="add_vpn">+ إضافة VPN</string>
-    <string name="manage_vpns">إدارة شبكات VPN</string>
-    <string name="vpn_profiles_title">أنفاق VPN المعزولة</string>
+    <string name="manage_vpns">إدارة ملفات VPN</string>
+    <string name="vpn_profiles_title">ملفات VPN</string>
     <string name="vpn_name">اسم الشبكة</string>
     <string name="vpn_type">نوع البروتوكول</string>
     <string name="server_address">عنوان الخادم</string>
@@ -80,9 +80,31 @@
     <string name="vpn_connected">متصل</string>
     <string name="vpn_connecting">جاري الاتصال...</string>
     <string name="vpn_disconnected">غير متصل</string>
-    <string name="no_vpns">لا توجد شبكات VPN داخلية مهيأة.\nانقر فوق \'+ إضافة VPN\' لإنشاء نفق معزول.</string>
+    <string name="no_vpns">لا توجد ملفات VPN مهيأة.\nانقر فوق \'+ إضافة VPN\' لإنشاء ملف جديد.</string>
     <string name="vpn_active_badge">VPN</string>
-    <string name="vpn_connected_toast">تم الاتصال بنفق VPN الداخلي: %s</string>
-    <string name="vpn_disconnected_toast">تم قطع اتصال VPN الداخلي</string>
+    <string name="vpn_connected_toast">ملف VPN جاهز: %s</string>
+    <string name="vpn_disconnected_toast">تم قطع اتصال VPN</string>
     <string name="vpn_auth_title">مصادقة شبكة VPN</string>
+    <string name="vpn_connecting_title">جاري الاتصال بنفق VPN</string>
+    <string name="vpn_step_resolve">جاري تحديد عنوان البوابة عبر DNS…</string>
+    <string name="vpn_step_probe">فحص إمكانية الوصول لمنفذ البروتوكول…</string>
+    <string name="vpn_step_auth">التحقق من صحة بيانات الاعتماد…</string>
+    <string name="vpn_step_tunnel">تهيئة واجهة النفق (tun0)…</string>
+    <string name="vpn_connection_failed">فشل الاتصال</string>
+    <string name="vpn_gateway_unreachable">تعذر الوصول إلى الخادم %1$s على المنفذ %2$d. تأكد من أن خادم VPN متاح ويعمل.</string>
+    <string name="retry">إعادة المحاولة</string>
+    <string name="vpn_err_no_network">لا يوجد اتصال بالإنترنت. يرجى تفعيل Wi-Fi أو بيانات الهاتف.</string>
+    <string name="vpn_err_server_unreachable">خادم VPN غير متاح أو لا يستجيب حالياً.</string>
+    <string name="vpn_err_auth_failed">فشلت المصادقة: تم رفض بيانات الاعتماد بواسطة الخادم (خطأ 691).</string>
+    <string name="ip_identifier">معرّف IP / IPSec والمنفذ</string>
+    <string name="ip_identifier_hint">غير مستخدم (اختياري) أو منفذ مخصص (مثل 443, 1701, 500)</string>
+    <string name="edit">تعديل</string>
+    <string name="add_vpn_title">إضافة ملف VPN</string>
+    <string name="edit_vpn_title">تعديل ملف VPN</string>
+    <string name="system_vpn_setup">إعداد VPN النظام</string>
+    <string name="configure_system_vpn">إعداد VPN عبر النظام</string>
+    <string name="privacy_proxy">وكيل الخصوصية</string>
+    <string name="copy_all_details">نسخ جميع التفاصيل</string>
+    <string name="open_system_vpn_settings">فتح إعدادات VPN النظام</string>
+    <string name="vpn_details_copied">تم نسخ تفاصيل VPN للحافظة</string>
 </resources>

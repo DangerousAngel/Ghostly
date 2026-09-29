@@ -60,11 +60,11 @@
     <string name="probe_running">Executing socket &amp; DNS probe...</string>
 
     <!-- In-App Isolated VPN -->
-    <string name="vpn_section_title">IN-APP ISOLATED VPN</string>
-    <string name="vpn_section_desc">Tunnel web traffic exclusively for Ghostly. Other device apps remain unaffected.</string>
+    <string name="vpn_section_title">VPN CONFIGURATION</string>
+    <string name="vpn_section_desc">Configure VPN profiles. Uses Android\'s built-in L2TP/IPSec client for real encrypted tunnel connections across all apps.</string>
     <string name="add_vpn">+ Add VPN</string>
-    <string name="manage_vpns">Manage In-App VPNs</string>
-    <string name="vpn_profiles_title">In-App VPN Tunnels</string>
+    <string name="manage_vpns">Manage VPN Profiles</string>
+    <string name="vpn_profiles_title">VPN Profiles</string>
     <string name="vpn_name">VPN Name</string>
     <string name="vpn_type">VPN Type</string>
     <string name="server_address">Server Address</string>
@@ -80,9 +80,31 @@
     <string name="vpn_connected">Connected</string>
     <string name="vpn_connecting">Connecting...</string>
     <string name="vpn_disconnected">Disconnected</string>
-    <string name="no_vpns">No in-app VPN profiles configured.\nTap \'+ Add VPN\' to create an isolated tunnel.</string>
+    <string name="no_vpns">No VPN profiles configured.\nTap \'+ Add VPN\' to create a profile.</string>
     <string name="vpn_active_badge">VPN</string>
-    <string name="vpn_connected_toast">In-app VPN connected: %s</string>
-    <string name="vpn_disconnected_toast">In-app VPN disconnected</string>
+    <string name="vpn_connected_toast">VPN profile ready: %s</string>
+    <string name="vpn_disconnected_toast">VPN disconnected</string>
     <string name="vpn_auth_title">VPN Authentication</string>
+    <string name="vpn_connecting_title">Connecting to VPN</string>
+    <string name="vpn_step_resolve">Resolving gateway host…</string>
+    <string name="vpn_step_probe">Probing protocol port reachability…</string>
+    <string name="vpn_step_auth">Authenticating credentials…</string>
+    <string name="vpn_step_tunnel">Establishing tunnel (tun0)…</string>
+    <string name="vpn_connection_failed">Connection Failed</string>
+    <string name="vpn_gateway_unreachable">Gateway %1$s is unreachable on port %2$d. Ensure the VPN server is online and accessible.</string>
+    <string name="retry">Retry</string>
+    <string name="vpn_err_no_network">Network interface offline. Please enable Wi-Fi or Mobile Data.</string>
+    <string name="vpn_err_server_unreachable">VPN server is unreachable or not responding.</string>
+    <string name="vpn_err_auth_failed">Authentication failed: Server rejected credentials (Error 691).</string>
+    <string name="ip_identifier">IP / IPSec Identifier &amp; Port</string>
+    <string name="ip_identifier_hint">Not used (optional) or custom port (e.g. 443, 1701, 500)</string>
+    <string name="edit">Edit</string>
+    <string name="add_vpn_title">ADD VPN PROFILE</string>
+    <string name="edit_vpn_title">EDIT VPN PROFILE</string>
+    <string name="system_vpn_setup">SYSTEM VPN SETUP</string>
+    <string name="configure_system_vpn">CONFIGURE SYSTEM VPN</string>
+    <string name="privacy_proxy">PRIVACY PROXY</string>
+    <string name="copy_all_details">COPY ALL DETAILS TO CLIPBOARD</string>
+    <string name="open_system_vpn_settings">OPEN SYSTEM VPN SETTINGS</string>
+    <string name="vpn_details_copied">VPN details copied to clipboard</string>
 </resources>

@@ -12,7 +12,7 @@ public class GhostSettings {
 
     private static final String PREF_NAME = "ghostly_prefs";
 
-    public static final String KEY_SEARCH_ENGINE = "search_engine";
+    public static final String KEY_SEARCH_ENGINE = "search_engine_v2";
     public static final String KEY_BLOCK_COOKIES = "block_cookies";
     public static final String KEY_BLOCK_SESSIONS = "block_sessions";
     public static final String KEY_BLOCK_CACHE = "block_cache";
@@ -34,7 +34,7 @@ public class GhostSettings {
     }
 
     public String getSearchEngine() {
-        return prefs.getString(KEY_SEARCH_ENGINE, ENGINE_DUCKDUCKGO);
+        return prefs.getString(KEY_SEARCH_ENGINE, ENGINE_GOOGLE);
     }
 
     public void setSearchEngine(String engine) {
@@ -117,16 +117,16 @@ public class GhostSettings {
             switch (engine) {
                 case ENGINE_STARTPAGE:
                     return "https://www.startpage.com/sp/search?query=" + encodedQuery;
-                case ENGINE_GOOGLE:
-                    return "https://www.google.com/search?q=" + encodedQuery;
+                case ENGINE_DUCKDUCKGO:
+                    return "https://duckduckgo.com/?q=" + encodedQuery;
                 case ENGINE_BING:
                     return "https://www.bing.com/search?q=" + encodedQuery;
-                case ENGINE_DUCKDUCKGO:
+                case ENGINE_GOOGLE:
                 default:
-                    return "https://duckduckgo.com/?q=" + encodedQuery;
+                    return "https://www.google.com/search?q=" + encodedQuery;
             }
         } catch (Exception e) {
-            return "https://duckduckgo.com/?q=" + query;
+            return "https://www.google.com/search?q=" + query;
         }
     }
 }

@@ -47,27 +47,27 @@ public class SettingsDialog {
             case GhostSettings.ENGINE_STARTPAGE:
                 rbStartpage.setChecked(true);
                 break;
-            case GhostSettings.ENGINE_GOOGLE:
-                rbGoogle.setChecked(true);
+            case GhostSettings.ENGINE_DUCKDUCKGO:
+                rbDuckDuckGo.setChecked(true);
                 break;
             case GhostSettings.ENGINE_BING:
                 rbBing.setChecked(true);
                 break;
-            case GhostSettings.ENGINE_DUCKDUCKGO:
+            case GhostSettings.ENGINE_GOOGLE:
             default:
-                rbDuckDuckGo.setChecked(true);
+                rbGoogle.setChecked(true);
                 break;
         }
 
         searchEngineGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.rbStartpage) {
                 settings.setSearchEngine(GhostSettings.ENGINE_STARTPAGE);
-            } else if (checkedId == R.id.rbGoogle) {
-                settings.setSearchEngine(GhostSettings.ENGINE_GOOGLE);
+            } else if (checkedId == R.id.rbDuckDuckGo) {
+                settings.setSearchEngine(GhostSettings.ENGINE_DUCKDUCKGO);
             } else if (checkedId == R.id.rbBing) {
                 settings.setSearchEngine(GhostSettings.ENGINE_BING);
             } else {
-                settings.setSearchEngine(GhostSettings.ENGINE_DUCKDUCKGO);
+                settings.setSearchEngine(GhostSettings.ENGINE_GOOGLE);
             }
             if (callback != null) callback.onSettingsChanged();
         });

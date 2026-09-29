@@ -15,6 +15,7 @@ import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.ContextMenu;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -28,6 +29,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.io.File;
@@ -76,6 +78,7 @@ public class MainActivity extends Activity implements GhostVpnManager.StateListe
     private TextView tvErrorSummary;
     private TextView tvErrorTargetUrl;
     private TextView tvTerminalLog;
+    private ScrollView consoleScrollView;
     private Button btnRetryConnection;
     private Button btnRunProbe;
     private Button btnCopyReport;
@@ -129,7 +132,7 @@ public class MainActivity extends Activity implements GhostVpnManager.StateListe
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == GhostVpnManager.REQUEST_VPN_PREPARE) {
-            GhostVpnManager.getInstance(this).onPrepareResult(resultCode);
+            GhostVpnManager.getInstance(this).onPrepareResult(this, resultCode);
         }
     }
 
@@ -160,6 +163,7 @@ public class MainActivity extends Activity implements GhostVpnManager.StateListe
         tvErrorSummary = findViewById(R.id.tvErrorSummary);
         tvErrorTargetUrl = findViewById(R.id.tvErrorTargetUrl);
         tvTerminalLog = findViewById(R.id.tvTerminalLog);
+        consoleScrollView = findViewById(R.id.consoleScrollView);
         btnRetryConnection = findViewById(R.id.btnRetryConnection);
         btnRunProbe = findViewById(R.id.btnRunProbe);
         btnCopyReport = findViewById(R.id.btnCopyReport);
@@ -214,11 +218,49 @@ public class MainActivity extends Activity implements GhostVpnManager.StateListe
             btnReturnHome.setOnClickListener(v -> showHomeScreen());
         }
 
+        // Enable smooth, independent scrolling for Technical Stack Diagnostics
+        if (consoleScrollView != null) {
+            consoleScrollView.setOnTouchListener((v, event) -> {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            });
+        }
+        if (tvTerminalLog != null) {
+            tvTerminalLog.setOnTouchListener((v, event) -> {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            });
+        }
+
         // Address Bar Action
+        urlEditText.setOnFocusChangeListener((v, hasFocus) -> {
+            urlEditText.setCursorVisible(hasFocus);
+        });
+
         urlEditText.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_GO || actionId == EditorInfo.IME_ACTION_DONE) {
-                loadEnteredInput(urlEditText.getText().toString());
+            boolean isEnterKey = (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER);
+            if (actionId == EditorInfo.IME_ACTION_GO ||
+                actionId == EditorInfo.IME_ACTION_SEARCH ||
+                actionId == EditorInfo.IME_ACTION_DONE ||
+                actionId == EditorInfo.IME_ACTION_UNSPECIFIED ||
+                isEnterKey) {
+                if (event == null || event.getAction() == KeyEvent.ACTION_DOWN) {
+                    String input = urlEditText.getText().toString();
+                    urlEditText.clearFocus();
+                    hideKeyboard();
+                    loadEnteredInput(input);
+                }
+                return true;
+            }
+            return false;
+        });
+
+        urlEditText.setOnKeyListener((v, keyCode, event) -> {
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
+                String input = urlEditText.getText().toString();
+                urlEditText.clearFocus();
                 hideKeyboard();
+                loadEnteredInput(input);
                 return true;
             }
             return false;
@@ -527,6 +569,9 @@ public class MainActivity extends Activity implements GhostVpnManager.StateListe
             tab.getWebView().setVisibility(View.VISIBLE);
             tab.getWebView().loadUrlWithPrivacy(url);
             urlEditText.setText(url);
+            urlEditText.clearFocus();
+            hideKeyboard();
+            tab.getWebView().requestFocus();
         }
     }
 
@@ -673,11 +718,11 @@ public class MainActivity extends Activity implements GhostVpnManager.StateListe
             sb.append("DIAGNOSTIC FAULT   : ").append(e.getMessage()).append("\n");
         }
 
-        sb.append("\n[+] IN-APP ISOLATED VPN SUBSYSTEM:\n");
+        sb.append("\n[+] GHOSTLY VPN SUBSYSTEM:\n");
         GhostVpnManager vpn = GhostVpnManager.getInstance(this);
         if (vpn.isVpnActive() && vpn.getActiveProfile() != null) {
             GhostVpnProfile p = vpn.getActiveProfile();
-            sb.append("TUNNEL STATE       : ACTIVE (RESTRICTED EXCLUSIVELY TO da.ghostly.com)\n");
+            sb.append("TUNNEL STATE       : ACTIVE (ALL APPS PROTECTED)\n");
             sb.append("PROFILE NAME       : ").append(p.getName()).append("\n");
             sb.append("PROTOCOL TYPE      : ").append(p.getType()).append("\n");
             sb.append("SERVER GATEWAY     : ").append(p.getServerAddress()).append("\n");
@@ -1041,10 +1086,27 @@ public class MainActivity extends Activity implements GhostVpnManager.StateListe
     }
 
     private void hideKeyboard() {
+        if (urlEditText != null) {
+            urlEditText.clearFocus();
+            urlEditText.setCursorVisible(false);
+        }
         View view = getCurrentFocus();
+        if (view == null) {
+            view = urlEditText;
+        }
         if (view != null) {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        }
+        View root = findViewById(R.id.rootLayout);
+        if (root != null) {
+            root.requestFocus();
+        }
+        GhostTab activeTab = getActiveTab();
+        if (activeTab != null && activeTab.getWebView() != null && activeTab.getWebView().getVisibility() == View.VISIBLE) {
+            activeTab.getWebView().requestFocus();
         }
     }
 

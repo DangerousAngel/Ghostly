@@ -28,6 +28,7 @@ public class GhostVpnManager {
     private static final String PREF_NAME = "ghost_vpn_prefs";
     private static final String KEY_PROFILES = "profiles_json";
     private static final String KEY_ACTIVE_PROFILE_ID = "active_profile_id";
+    private static final String KEY_DEFAULTS_SEEDED = "defaults_seeded_v1";
 
     private static GhostVpnManager instance;
 
@@ -56,6 +57,63 @@ public class GhostVpnManager {
     private GhostVpnManager(Context context) {
         this.appContext = context;
         this.prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        seedDefaultProfiles();
+    }
+
+    /**
+     * Seeds 2 default VPN Gate profiles on first launch.
+     * VPN Gate credentials: username=vpn, password=vpn, PSK=vpn
+     */
+    private void seedDefaultProfiles() {
+        if (prefs.getBoolean(KEY_DEFAULTS_SEEDED, false)) return;
+        prefs.edit().putBoolean(KEY_DEFAULTS_SEEDED, true).apply();
+
+        GhostVpnProfile p1 = new GhostVpnProfile(
+                "VPN Gate (Japan #1)",
+                GhostVpnProfile.TYPE_L2TP_IPSEC_PSK,
+                "219.100.37.201",
+                "",
+                true,
+                "vpn"
+        );
+        p1.setLastUsername("vpn");
+        p1.setLastPassword("vpn");
+        p1.setRememberCredentials(true);
+
+        GhostVpnProfile p2 = new GhostVpnProfile(
+                "VPN Gate (Japan #2)",
+                GhostVpnProfile.TYPE_L2TP_IPSEC_PSK,
+                "219.100.37.176",
+                "",
+                true,
+                "vpn"
+        );
+        p2.setLastUsername("vpn");
+        p2.setLastPassword("vpn");
+        p2.setRememberCredentials(true);
+
+        List<GhostVpnProfile> profiles = getProfiles();
+        profiles.add(p1);
+        profiles.add(p2);
+        saveProfiles(profiles);
+    }
+
+    /**
+     * Opens Android System VPN Settings for L2TP/IPSec configuration.
+     */
+    public static void launchSystemVpnSettings(android.app.Activity activity) {
+        try {
+            Intent intent = new Intent(android.provider.Settings.ACTION_VPN_SETTINGS);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            activity.startActivity(intent);
+        } catch (Exception e) {
+            try {
+                Intent fallback = new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS);
+                fallback.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                activity.startActivity(fallback);
+            } catch (Exception ignored) {
+            }
+        }
     }
 
     public synchronized List<GhostVpnProfile> getProfiles() {
@@ -190,15 +248,19 @@ public class GhostVpnManager {
             activity.startActivityForResult(prepareIntent, REQUEST_VPN_PREPARE);
             return false;
         } else {
-            // Permission already granted
-            startServiceInternal(profile, username, password);
+            // Permission already granted -> launch Connecting Dialog
+            VpnConnectingDialog.show(activity, profile, username, password, null);
             return true;
         }
     }
 
-    public void onPrepareResult(int resultCode) {
+    public void onPrepareResult(Activity activity, int resultCode) {
         if (resultCode == Activity.RESULT_OK && pendingProfile != null) {
-            startServiceInternal(pendingProfile, pendingUsername, pendingPassword);
+            if (activity != null) {
+                VpnConnectingDialog.show(activity, pendingProfile, pendingUsername, pendingPassword, null);
+            } else {
+                startServiceInternal(pendingProfile, pendingUsername, pendingPassword);
+            }
         } else {
             notifyState(STATE_DISCONNECTED, null);
         }
@@ -207,7 +269,15 @@ public class GhostVpnManager {
         pendingPassword = "";
     }
 
-    private void startServiceInternal(GhostVpnProfile profile, String username, String password) {
+    public void onPrepareResult(int resultCode) {
+        onPrepareResult(null, resultCode);
+    }
+
+    public void startServiceInternal(GhostVpnProfile profile, String username, String password) {
+        startServiceInternal(profile, username, password, null);
+    }
+
+    public void startServiceInternal(GhostVpnProfile profile, String username, String password, VpnProtocolClient.HandshakeResult result) {
         notifyState(STATE_CONNECTING, profile);
 
         Intent intent = new Intent(appContext, GhostVpnService.class);
@@ -215,7 +285,22 @@ public class GhostVpnManager {
         intent.putExtra(GhostVpnService.EXTRA_PROFILE_ID, profile.getId());
         intent.putExtra(GhostVpnService.EXTRA_USERNAME, username);
         intent.putExtra(GhostVpnService.EXTRA_PASSWORD, password);
-        appContext.startService(intent);
+
+        if (result != null) {
+            intent.putExtra(GhostVpnService.EXTRA_SERVER_IP, result.serverIp);
+            intent.putExtra(GhostVpnService.EXTRA_SERVER_PORT, result.serverPort);
+            intent.putExtra(GhostVpnService.EXTRA_CLIENT_IP, result.assignedClientIp);
+            intent.putExtra(GhostVpnService.EXTRA_DNS_SERVER, result.dnsServer);
+            intent.putExtra(GhostVpnService.EXTRA_TUNNEL_ID, result.tunnelId);
+            intent.putExtra(GhostVpnService.EXTRA_SESSION_ID, result.sessionId);
+            intent.putExtra(GhostVpnService.EXTRA_IS_L2TP, result.isL2tp);
+        }
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            appContext.startForegroundService(intent);
+        } else {
+            appContext.startService(intent);
+        }
     }
 
     public void stopVpn() {

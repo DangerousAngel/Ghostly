@@ -40,11 +40,18 @@
             android:padding="8dp">
 
             <RadioButton
-                android:id="@+id/rbDuckDuckGo"
+                android:id="@+id/rbGoogle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="DuckDuckGo (Privacy Default)"
+                android:text="Google (Default)"
+                android:textColor="@color/ghost_text_primary" />
+
+            <RadioButton
+                android:id="@+id/rbDuckDuckGo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DuckDuckGo"
                 android:textColor="@color/ghost_text_primary" />
 
             <RadioButton
@@ -52,13 +59,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Startpage"
-                android:textColor="@color/ghost_text_primary" />
-
-            <RadioButton
-                android:id="@+id/rbGoogle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Google"
                 android:textColor="@color/ghost_text_primary" />
 
             <RadioButton

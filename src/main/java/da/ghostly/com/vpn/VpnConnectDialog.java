@@ -14,7 +14,7 @@ import da.ghostly.com.R;
 
 /**
  * VpnConnectDialog
- * Authentication modal with remembered / pre-filled credentials for VPN connection.
+ * Authentication modal with System VPN Setup (primary) and Privacy Proxy (secondary) options.
  */
 public class VpnConnectDialog {
 
@@ -44,6 +44,7 @@ public class VpnConnectDialog {
         EditText etVpnPassword = view.findViewById(R.id.etVpnPassword);
         CheckBox cbRememberCredentials = view.findViewById(R.id.cbRememberCredentials);
         Button btnCancel = view.findViewById(R.id.btnCancelConnect);
+        Button btnSystemVpn = view.findViewById(R.id.btnSystemVpnSetup);
         Button btnConnect = view.findViewById(R.id.btnConfirmConnect);
 
         tvAuthVpnName.setText(profile.getName());
@@ -62,6 +63,23 @@ public class VpnConnectDialog {
 
         btnCancel.setOnClickListener(v -> dialog.dismiss());
 
+        // PRIMARY: Open System VPN Setup dialog with all connection details
+        if (btnSystemVpn != null) {
+            btnSystemVpn.setOnClickListener(v -> {
+                String username = etVpnUsername.getText().toString().trim();
+                String password = etVpnPassword.getText().toString();
+                boolean remember = cbRememberCredentials.isChecked();
+
+                // Save credentials
+                GhostVpnManager.getInstance(activity).updateCredentials(
+                        profile.getId(), username, password, remember);
+
+                dialog.dismiss();
+                SystemVpnSetupDialog.show(activity, profile, username, password);
+            });
+        }
+
+        // SECONDARY: Privacy Proxy mode (transparent TUN relay, not a real VPN tunnel)
         btnConnect.setOnClickListener(v -> {
             String username = etVpnUsername.getText().toString().trim();
             String password = etVpnPassword.getText().toString();
@@ -69,7 +87,7 @@ public class VpnConnectDialog {
 
             dialog.dismiss();
 
-            // Initiate isolated VPN tunnel connection
+            // Initiate Privacy Proxy tunnel connection
             GhostVpnManager.getInstance(activity).connect(activity, profile, username, password, remember);
 
             if (callback != null) {
@@ -80,3 +98,4 @@ public class VpnConnectDialog {
         dialog.show();
     }
 }
+

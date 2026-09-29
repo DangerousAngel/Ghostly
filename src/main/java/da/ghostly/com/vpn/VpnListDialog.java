@@ -92,12 +92,18 @@ public class VpnListDialog implements GhostVpnManager.StateListener {
             TextView tvType = itemView.findViewById(R.id.tvProfileType);
             TextView tvServer = itemView.findViewById(R.id.tvProfileServer);
             TextView tvEncryption = itemView.findViewById(R.id.tvProfileEncryption);
+            ImageButton btnEdit = itemView.findViewById(R.id.btnEditProfile);
             ImageButton btnDelete = itemView.findViewById(R.id.btnDeleteProfile);
             Button btnConnectToggle = itemView.findViewById(R.id.btnConnectToggle);
 
             tvName.setText(p.getName());
             tvType.setText(p.getType());
-            tvServer.setText(p.getServerAddress());
+
+            String serverDisplay = p.getServerAddress();
+            if (p.getIpIdentifier() != null && !p.getIpIdentifier().trim().isEmpty()) {
+                serverDisplay = serverDisplay + " [ID: " + p.getIpIdentifier().trim() + "]";
+            }
+            tvServer.setText(serverDisplay);
             tvEncryption.setText(p.isPppEncryption() ? "PPP Encryption (MPPE): Enabled" : "PPP Encryption: Disabled");
 
             boolean isCurrentActive = (activeProfile != null && activeProfile.getId().equals(p.getId()));
@@ -131,6 +137,12 @@ public class VpnListDialog implements GhostVpnManager.StateListener {
                     VpnConnectDialog.show(activity, p, connectedProfile -> renderProfiles());
                 }
             });
+
+            if (btnEdit != null) {
+                btnEdit.setOnClickListener(v -> {
+                    AddVpnDialog.showEdit(activity, p, updatedProfile -> renderProfiles());
+                });
+            }
 
             btnDelete.setOnClickListener(v -> {
                 vpnManager.deleteProfile(p.getId());

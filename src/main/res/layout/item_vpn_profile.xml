@@ -41,6 +41,16 @@
             android:textStyle="bold" />
 
         <ImageButton
+            android:id="@+id/btnEditProfile"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="2dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/edit"
+            android:padding="6dp"
+            android:src="@drawable/ic_edit" />
+
+        <ImageButton
             android:id="@+id/btnDeleteProfile"
             android:layout_width="32dp"
             android:layout_height="32dp"
