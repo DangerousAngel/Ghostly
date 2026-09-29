@@ -3,6 +3,7 @@
 > **A modern, minimalist, pure monochrome Android browser engineered for zero-trace browsing, ephemeral memory, and maximum privacy.**
 
 ![ss](Screenshot.png)
+
 Created by **[DangerousAngel](https://github.com/DangerousAngel)** 
 ---
 
